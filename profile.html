@@ -1,0 +1,73 @@
+<body>
+    <div id="profile" class="">
+
+        <div class="profile-wrapper">
+          <div id="profile-picture" class="border-box">
+            <img src="img/profile.png" />      
+          </div>
+          <span> "Meow I'm a kitty cat" </span>
+        </div>
+
+        <div class="profile-middle">
+          <div class="scribble"></div>
+        </div>
+
+        <div id="results">
+
+          <div class="results-left">
+            <div data-quiz-one="">Quiz One:</div>
+            <div data-quiz-two="">Quiz Two:</div>
+            <div data-quiz-three="">Quiz Three:</div>
+          </div>
+
+          <div class="results-right">
+            <div data-quiz-one="true"><img src="" /></div>
+            <div data-quiz-two="true"><img src="" /></div>
+            <div data-quiz-three="true"><img src="" /></div>
+          </div>
+
+          <div class="success-rate">
+              <span>your success rate was:</span>
+              <div id="score"></div>
+          </div>
+        </div>
+        
+    </div>
+
+    <script>
+      $(document).ready(function(){
+        var successes = 0;
+        //check if quiz 1 is answered and whats the answer
+        if(testTwo.quizOneAnswer === undefined || testTwo.quizOneAnswer === null){
+          $(".results-right div[data-quiz-one='true']").html("Unanswered");
+        }else if(testTwo.quizOneAnswer === true){
+          $(".results-right div[data-quiz-one='true'] > img").attr("src", 'img/check.svg');
+          successes++;
+        }else{
+          $(".results-right div[data-quiz-one='true'] > img").attr("src", 'img/x2.svg');
+        }
+        //check if quiz 2 is answered and whats the answer
+        if(testTwo.quizTwoAnswer === undefined || testTwo.quizTwoAnswer === null){
+          $(".results-right div[data-quiz-two='true']").html("Unanswered");
+        }else if(testTwo.quizTwoAnswer === true){
+          $(".results-right div[data-quiz-two='true'] > img").attr("src", 'img/check.svg');
+          successes++;
+        }else{
+          $(".results-right div[data-quiz-two='true'] > img").attr("src", 'img/x2.svg');
+        }
+         //check if quiz 3 is answered and whats the answer
+        if(testTwo.quizThreeAnswer === undefined || testTwo.quizThreeAnswer === null){
+          $(".results-right div[data-quiz-three='true']").html("Unanswered");
+        }else if(testTwo.quizThreeAnswer === true){
+          $(".results-right div[data-quiz-three='true'] > img").attr("src", 'img/check.svg');
+          successes++;
+        }else{
+          $(".results-right div[data-quiz-three='true'] > img").attr("src", 'img/x2.svg');
+        }
+        var sucsessPercent = Math.round(100 * successes / 3);
+        $("#score").html(sucsessPercent+"%");
+
+
+      });
+    </script>
+</body>
